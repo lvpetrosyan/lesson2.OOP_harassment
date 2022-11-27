@@ -22,27 +22,21 @@ public class BirdsFlight extends Birds {
     public BirdsFlight(String name) {
         this(name, 0, "Наземно-воздушная среда","Передвигается с помощью крыльев. Летает", "насекомые и ягоды");
     }
-    @Override
-    public String toString() {
-        return  getName()+
-                ", возраст: " + getYearBirth()+". Среда проживания - "+getLivingEnviromental()
-                +" Тип передвижения: "+ typeGo;
-    }
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Birds birds = (Birds) o;
-        return Objects.equals(getName(), birds.getName())&&
-                getYearBirth()==birds.getYearBirth();
-
+    public String getTypeGo() {
+        return typeGo;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(),getYearBirth());
+    public String getTypeEat() {
+        return typeEat;
     }
 
-
+    public void setTypeEat(String typeEat) {
+        if (typeEat == null || typeEat.isBlank() || typeEat.isBlank()) {
+            this.typeEat = "насекомые и ягоды";
+        } else {
+            this.typeEat = typeEat;
+        }
+    }
     @Override
     public void eat() {
         System.out.println(getName()+ " употребляет в пищу: "+typeEat);
@@ -71,19 +65,27 @@ public class BirdsFlight extends Birds {
         System.out.println(getName()+ " охотится в основном нападая с воздуха.");
 
     }
-    public String getTypeGo() {
-        return typeGo;
+    @Override
+    public String toString() {
+        return  getName()+
+                ", возраст: " + getYearBirth()+". Среда проживания - "+getLivingEnviromental()
+                +" Тип передвижения: "+ typeGo;
+    }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Birds birds = (Birds) o;
+        return Objects.equals(getName(), birds.getName())&&
+                getYearBirth()==birds.getYearBirth();
+
     }
 
-    public String getTypeEat() {
-        return typeEat;
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(),getYearBirth());
     }
 
-    public void setTypeEat(String typeEat) {
-        if (typeEat == null || typeEat.isBlank() || typeEat.isBlank()) {
-            this.typeEat = "насекомые и ягоды";
-        } else {
-            this.typeEat = typeEat;
-        }
-    }
+
+
+
 }

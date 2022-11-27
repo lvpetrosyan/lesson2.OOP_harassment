@@ -2,7 +2,7 @@ package animals;
 
 import java.util.Objects;
 
-public class Amphibians extends Animal{
+public class Amphibians extends Animal {
     private String livingEnviromental;
 
 
@@ -15,31 +15,24 @@ public class Amphibians extends Animal{
         }
     }
 
+    public String getLivingEnviromental() {
+        return livingEnviromental;
+    }
+
+    public void setLivingEnviromental(String livingEnviromental) {
+        if (livingEnviromental == null || livingEnviromental.isBlank() || livingEnviromental.isBlank()) {
+            this.livingEnviromental = "водоем";
+        } else {
+            this.livingEnviromental = livingEnviromental;
+        }
+    }
+
     public Amphibians(String name) {
-        this(name,0,"водоемы");
-    }
-    @Override
-    public String toString() {
-        return  getName()+
-                ", возраст: " + getYearBirth()+". Среда проживания - "+getLivingEnviromental();
+        this(name, 0, "водоемы");
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Amphibians amphibians = (Amphibians) o;
-        return Objects.equals(getName(), amphibians.getName());
-
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName());
-    }
-
-    public void hunt(){
+    public void hunt() {
         System.out.println("Охотится на насекомых. ");
     }
 
@@ -60,14 +53,26 @@ public class Amphibians extends Animal{
         System.out.println("Плавает в воде");
 
     }
-    public String getLivingEnviromental() {
-        return livingEnviromental;
+
+
+    @Override
+    public String toString() {
+        return getName() +
+                ", возраст: " + getYearBirth() + ". Среда проживания - " + getLivingEnviromental();
     }
-    public void setLivingEnviromental(String livingEnviromental) {
-        if (livingEnviromental == null || livingEnviromental.isBlank() || livingEnviromental.isBlank()) {
-            this.livingEnviromental = "водоем";
-        } else {
-            this.livingEnviromental = livingEnviromental;
-        }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Amphibians amphibians = (Amphibians) o;
+        return Objects.equals(getName(), amphibians.getName());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 }

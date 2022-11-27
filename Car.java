@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Car extends Transport {
     private double engineVolume;
     private String transmission;
@@ -67,11 +69,7 @@ public class Car extends Transport {
         this.registratNumber="OOO777OOO";
         this.seatsNumber=4;
             }
-    @Override
-    public void refill() {
-        System.out.println("Заправлять дизелем или бензином на заправке.");
-        System.out.println("заряжать на специальных электроду-парковках.");
-    }
+
 
     public double getEngineVolume() {
         return engineVolume;
@@ -98,6 +96,26 @@ public class Car extends Transport {
     public String getRegistratNumber() {
         return registratNumber;
     }
+    public int getSeatsNumber() {
+        return seatsNumber;
+    }
+
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
 
     public void setRegistratNumber (String registratNumber) {
             if (registratNumber == null || registratNumber == "") {
@@ -107,10 +125,53 @@ public class Car extends Transport {
                 this.registratNumber = registratNumber;
             }
     }
+    @Override
+    public void refill() {
+        System.out.println("Заправлять дизелем или бензином на заправке.");
+        System.out.println("заряжать на специальных электроду-парковках.");
+    }
+    public String toString() {
+        return "Машина " +
+                marks +
+                ", модель " + model +
+                ". Год выпуска: " + yearCreation +
+                ", производство " + country  +
+                ". Цвет - " + color  +
+                ", скорость " + maxSpeed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(registratNumber, car.registratNumber)&& Objects.equals(getModel(), car.getModel()) ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(registratNumber, getModel());
+    }
 
     public static class Key {
         private boolean playEngine;
         private boolean accessKey;
+
+        public boolean isPlayEngine() {
+            return playEngine;
+        }
+
+        public void setPlayEngine(boolean playEngine) {
+            this.playEngine = playEngine;
+        }
+
+        public boolean isAccessKey() {
+            return accessKey;
+        }
+
+        public void setAccessKey(boolean accessKey) {
+            this.accessKey = accessKey;
+        }
 
         public Key(boolean playEngine, boolean accessKey) {
             this.playEngine = playEngine;
@@ -150,6 +211,17 @@ public class Car extends Transport {
         public Insurance() {
             this(30,5000,"defolt");
         }
+        public int getDateTo() {
+            return dateTo;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+
+        public String getNumber() {
+            return number;
+        }
 
         public void checkDate() {
             if (dateTo <= 0) {
@@ -165,41 +237,8 @@ public class Car extends Transport {
             }
         }
 
-        public int getDateTo() {
-            return dateTo;
-        }
-
-        public int getPrice() {
-            return price;
-        }
-
-        public String getNumber() {
-            return number;
-        }
-
     }
 
-
-    public int getSeatsNumber() {
-        return seatsNumber;
-    }
-
-
-    public Key getKey() {
-        return key;
-    }
-
-    public void setKey(Key key) {
-        this.key = key;
-    }
-
-    public Insurance getInsurance() {
-        return insurance;
-    }
-
-    public void setInsurance(Insurance insurance) {
-        this.insurance = insurance;
-    }
 }
 
 

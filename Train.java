@@ -1,10 +1,11 @@
+import java.util.Objects;
+
 public class Train extends Transport {
     int priceTicket;
     int timeTravel;
     String nameStation;
     String endStop;
     int sumWagons;
-
 
 
     public Train(String marks,
@@ -46,28 +47,6 @@ public class Train extends Transport {
             this.sumWagons = sumWagons;
         }
     }
-
-    @Override
-    public void refill() {
-        System.out.println("Заправлять дизелем или бензином на заправке.");
-    }
-
-    @Override
-    public String toString() {
-        return "Поезд " +
-                marks + " модель "
-                + model + ", " + yearCreation +
-                " год выпуска в России, " +
-                "скорость передвижения — " + maxSpeed +
-                " км/ч, отходит от " +
-                nameStation +
-                " вокзала и следует до станции " + endStop +
-                ". Цена поездки — " + priceTicket +
-                " рублей, в поезде " + sumWagons +
-                " вагонов.";
-
-    }
-
 
     public int getPriceTicket() {
         return priceTicket;
@@ -128,4 +107,40 @@ public class Train extends Transport {
             this.sumWagons = sumWagons;
         }
     }
+
+    @Override
+    public void refill() {
+        System.out.println("Заправлять дизелем или бензином на заправке.");
+    }
+
+    @Override
+    public String toString() {
+        return "Поезд " +
+                marks + " модель "
+                + model + ", " + yearCreation +
+                " год выпуска в России, " +
+                "скорость передвижения — " + maxSpeed +
+                " км/ч, отходит от " +
+                nameStation +
+                " вокзала и следует до станции " + endStop +
+                ". Цена поездки — " + priceTicket +
+                " рублей, в поезде " + sumWagons +
+                " вагонов.";
+
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Train train = (Train) o;
+        return Objects.equals(marks, train.marks)&& Objects.equals(model, train.model) ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(marks, model);
+    }
+
+
+
 }

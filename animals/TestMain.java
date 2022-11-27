@@ -22,6 +22,7 @@ public class TestMain {
         Predator hyena= new Predator("Гиена Тася",-83,"Юго-западная Азия");
         Predator tiger= new Predator("Тигр Барон",5,"Дальний Восток",55,"травоядные");
         Predator bear= new Predator("Медведь Соня",17,"лесные массивы",-32,"всеядные");
+        System.out.println(hyena.equals(tiger));
         System.out.println(hyena.toString());
         System.out.println(tiger.toString());
         System.out.println(bear.toString());
@@ -48,6 +49,7 @@ public class TestMain {
         FligtlessBird peacock= new FligtlessBird("Павлин Петя");
         FligtlessBird penguin= new FligtlessBird("Пингвин Хонтор",4,"северный полюс","на лапках","рыба");
         FligtlessBird dodo= new FligtlessBird("Птица Додо",10,"в ледниковом периоде","на лапках"," ");
+        System.out.println(peacock.equals(dodo));
         System.out.println(peacock.toString());
         System.out.println(penguin.toString());
         System.out.println(dodo.toString());
@@ -61,6 +63,7 @@ public class TestMain {
         BirdsFlight gull= new BirdsFlight("Чайка Чача",8," ",null,"рыба");
         BirdsFlight albatross= new BirdsFlight("Альбатрос Альба",9," ",null,"рыба");
         BirdsFlight falcon= new BirdsFlight("Сокол Мачо",10,"горы ","летает","мелкие животные");
+        System.out.println(gull.equals(albatross));
         System.out.println(gull.toString());
         System.out.println(albatross.toString());
         System.out.println(falcon.toString());

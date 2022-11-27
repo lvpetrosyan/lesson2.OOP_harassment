@@ -20,24 +20,10 @@ public abstract class Mammals extends Animal {
         }
     }
 
-
     public Mammals(String name, int yearBirth, String livingEnviromental) {
         this(name, yearBirth, livingEnviromental, 15);
 
     }
-
-
-    public abstract void walk();
-
-
-    @Override
-    public abstract void eat();
-
-    @Override
-    public abstract void sleep();
-
-    @Override
-    public abstract void go();
 
     public String getLivingEnviromental() {
         return livingEnviromental;
@@ -61,5 +47,39 @@ public abstract class Mammals extends Animal {
         } else {
             this.speed = speed;
         }
+    }
+
+    public abstract void walk();
+
+
+    @Override
+    public abstract void eat();
+
+    @Override
+    public abstract void sleep();
+
+    @Override
+    public abstract void go();
+
+    @Override
+    public String toString() {
+        return getName() +
+                ", возраст: " + getYearBirth() + ". Среда проживания - " + livingEnviromental
+                + " , скорость передвижения " + getSpeed() + " км/ч";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EatGrass eatGrass = (EatGrass) o;
+        return Objects.equals(getName(), eatGrass.getName()) && Objects.equals(livingEnviromental, eatGrass.getLivingEnviromental()) &&
+                getYearBirth() == eatGrass.getYearBirth();
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), livingEnviromental, getYearBirth());
     }
 }

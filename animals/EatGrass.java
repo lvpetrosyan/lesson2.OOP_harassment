@@ -15,28 +15,16 @@ public class EatGrass extends Mammals{
     public EatGrass(String name, int yearBirth, String livingEnviromental) {
         this(name, yearBirth, livingEnviromental,15,"трава");
     }
-
-    @Override
-    public String toString() {
-        return  getName()+
-        ", возраст: " + getYearBirth()+". Среда проживания - "+getLivingEnviromental()
-                +" , скорость передвижения "+  getSpeed()+" км/ч. Тип пищи: "+ typeEat;
+    public String getTypeEat() {
+        return typeEat;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EatGrass eatGrass = (EatGrass) o;
-        return Objects.equals(getName(), eatGrass.getName())&&Objects.equals(getLivingEnviromental(),eatGrass.getLivingEnviromental())&&
-                getYearBirth()==eatGrass.getYearBirth();
-
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName(),getLivingEnviromental(),getYearBirth());
+    public void setTypeEat(String typeEat) {
+        if (typeEat == null || typeEat.isBlank() || typeEat.isBlank()) {
+            this.typeEat = "травка";
+        } else {
+            this.typeEat = typeEat;
+        }
     }
 
     public void graze(){
@@ -67,15 +55,25 @@ public class EatGrass extends Mammals{
 
     }
 
-    public String getTypeEat() {
-        return typeEat;
+    @Override
+    public String toString() {
+        return  getName()+
+                ", возраст: " + getYearBirth()+". Среда проживания - "+getLivingEnviromental()
+                +" , скорость передвижения "+  getSpeed()+" км/ч. Тип пищи: "+ typeEat;
     }
 
-    public void setTypeEat(String typeEat) {
-        if (typeEat == null || typeEat.isBlank() || typeEat.isBlank()) {
-            this.typeEat = "травка";
-        } else {
-            this.typeEat = typeEat;
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EatGrass eatGrass = (EatGrass) o;
+        return Objects.equals(getName(), eatGrass.getName())&&Objects.equals(getLivingEnviromental(),eatGrass.getLivingEnviromental())&&
+                getYearBirth()==eatGrass.getYearBirth();
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(),getLivingEnviromental(),getYearBirth());
     }
 }

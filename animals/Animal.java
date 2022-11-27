@@ -21,9 +21,6 @@ public abstract class Animal {
         this(name,0);
     }
 
-    public abstract void eat();
-    public abstract void sleep();
-    public abstract void go();
 
     public String getName() {
         return name;
@@ -40,4 +37,7 @@ public abstract class Animal {
     public int getYearBirth() {
         return yearBirth;
     }
+    public abstract void eat();
+    public abstract void sleep();
+    public abstract void go();
 }
